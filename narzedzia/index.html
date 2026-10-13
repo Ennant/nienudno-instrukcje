@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Instrukcje – Nienudno Robotyka</title>
+<style>body{font:16px/1.5 system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;color:#1f2a33}h1{font-size:26px}
+li{margin:4px 0}.c{margin-top:22px;font-weight:700}small{color:#6b7a86}</style></head>
+<body><h1>Instrukcje dla tabletów Nienudno Robotyka</h1>
+<p>Tę stronę czytają tablety. Instrukcje dodaje się w repozytorium na GitHubie (folder <code>instrukcje</code>).</p>
+<div id="l">Wczytuję…</div>
+<script>
+fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()).then(m=>{const g={};m.instructions.forEach(i=>(g[i.category]=g[i.category]||[]).push(i));
+document.getElementById('l').innerHTML=Object.keys(g).map(c=>`<div class="c">${c}</div><ul>${g[c].map(i=>`<li><a href="${i.url}">${i.title}</a> <small>${(i.size/1048576).toFixed(1)} MB</small></li>`).join('')}</ul>`).join('')||'Brak instrukcji.'
++(m.app?`<p class="c">Aplikacja: wersja ${m.app.versionName}</p>`:'');});
+</script></body></html>
